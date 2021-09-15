@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  anacondaos:
+    build:
+      context: .
+    image: continuumio/anaconda3:latest
+    working_dir: /var/www/project
+    volumes:
+      -  anaconda_storage:/opt/notebooks/
+    environment:
+      environment_name: test_env
+      package1: jupyter
+    ports:
+      -  8888:8888
+    tty: true
+    container_name: anacondafull 
+    command: 
+      - /bin/bash
+volumes:
+  anaconda_storage:
